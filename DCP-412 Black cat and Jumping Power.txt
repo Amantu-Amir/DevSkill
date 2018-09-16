@@ -1,0 +1,29 @@
+#define ONLINE_JUDGE 1
+#include<bits/stdc++.h>
+using namespace std;
+#define faster ios_base::sync_with_stdio(false); cin.tie(NULL);
+#define ll long long
+#define pb push_back
+#define vi vector<int>
+
+int main()
+{
+    int tc,n,r,p;
+    cin>>tc;
+    while(tc--){
+        cin>>n>>r>>p;
+        vi v(n+2);
+        v[0] = 0;
+        v[n+1] = r;
+        for(int i=1; i<=n; i++) cin>>v[i];
+        sort(v.begin(),v.end());
+        int ans = 0;
+        for(int i=1; i<=n+1; i++){
+            int tem = v[i] - v[i-1];
+            ans = max(ans,tem);
+        }
+        ans = max(0,ans-p);
+        cout<<ans<<endl;
+    }
+    return 0;
+}
